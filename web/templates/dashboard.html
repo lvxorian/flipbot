@@ -133,9 +133,9 @@
 
 {% block scripts %}
 <script>
-const sourceColors = {{ source_colors | tojson }};
-const sourceLabels = {{ source_labels | tojson }};
-const sourceValues = {{ source_values | tojson }};
+const sourceColors = {{ source_colors | default([]) | tojson }};
+const sourceLabels = {{ source_labels | default([]) | tojson }};
+const sourceValues = {{ source_values | default([]) | tojson }};
 
 new Chart(document.getElementById('sourceChart'), {
     type: 'doughnut',
@@ -151,17 +151,14 @@ new Chart(document.getElementById('sourceChart'), {
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
-            legend: {
-                position: 'right',
-                labels: { padding: 16, usePointStyle: true, font: { size: 12 } }
-            }
+            legend: { position: 'right', labels: { padding: 16, usePointStyle: true, font: { size: 12 } } }
         },
         cutout: '65%',
     }
 });
 
-const condLabels = {{ cond_labels | tojson }};
-const condValues = {{ cond_values | tojson }};
+const condLabels = {{ cond_labels | default([]) | tojson }};
+const condValues = {{ cond_values | default([]) | tojson }};
 const condColors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#06b6d4', '#6b7280'];
 
 new Chart(document.getElementById('conditionChart'), {
@@ -171,7 +168,7 @@ new Chart(document.getElementById('conditionChart'), {
         datasets: [{
             label: 'Počet inzerátů',
             data: condValues,
-            backgroundColor: condColors.slice(0, condLabels.length),
+            backgroundColor: condColors.slice(0, condLabels.length || 1),
             borderRadius: 6,
         }]
     },
@@ -186,8 +183,8 @@ new Chart(document.getElementById('conditionChart'), {
     }
 });
 
-const locLabels = {{ loc_labels | tojson }};
-const locValues = {{ loc_values | tojson }};
+const locLabels = {{ loc_labels | default([]) | tojson }};
+const locValues = {{ loc_values | default([]) | tojson }};
 
 new Chart(document.getElementById('locationChart'), {
     type: 'polarArea',

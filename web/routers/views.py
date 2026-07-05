@@ -35,16 +35,22 @@ def get_source_label(source: str) -> str:
     return labels.get(source, source)
 
 
-def get_base_context(request: Request) -> dict:
+def get_base_context() -> dict:
     data = load_data()
     stats = get_dashboard_stats(data)
-    return {"request": request, "stats": stats, "data": data}
+    return {"stats": stats, "data": data}
+
+
+def render(request: Request, name: str, context: dict | None = None):
+    ctx = get_base_context()
+    if context:
+        ctx.update(context)
+    return templates.TemplateResponse(request, name, ctx)
 
 
 @router.get("/", response_class=HTMLResponse)
 async def dashboard(request: Request):
-    ctx = get_base_context(request)
-    data = ctx["data"]
+    data = load_data()
     listings = data.get("listings", [])
     opportunities = data.get("opportunities", [])[:5]
 
@@ -93,26 +99,22 @@ async def dashboard(request: Request):
                 loc_labels.append("Ostatní")
                 loc_values.append(1)
 
-    return templates.TemplateResponse(
-        "dashboard.html",
-        {
-            **ctx,
-            "opportunities": opportunities,
-            "source_labels": source_labels,
-            "source_values": source_values,
-            "source_colors": source_colors,
-            "cond_labels": cond_labels,
-            "cond_values": cond_values,
-            "loc_labels": loc_labels,
-            "loc_values": loc_values,
-        },
-    )
+    return render(request, "dashboard.html", {
+        "opportunities": opportunities,
+        "source_labels": source_labels,
+        "source_values": source_values,
+        "source_colors": source_colors,
+        "cond_labels": cond_labels,
+        "cond_values": cond_values,
+        "loc_labels": loc_labels,
+        "loc_values": loc_values,
+    })
 
 
 @router.get("/listings", response_class=HTMLResponse)
 async def listings_page(request: Request, source: str = "", location: str = "", condition: str = ""):
-    ctx = get_base_context(request)
-    listings = ctx["data"].get("listings", [])
+    data = load_data()
+    listings = data.get("listings", [])
 
     if source:
         listings = [l for l in listings if l.get("source") == source]
@@ -121,35 +123,28 @@ async def listings_page(request: Request, source: str = "", location: str = "", 
     if condition:
         listings = [l for l in listings if l.get("condition") == condition]
 
-    return templates.TemplateResponse(
-        "listings.html",
-        {**ctx, "listings": listings, "source": source, "location": location, "condition": condition},
-    )
+    return render(request, "listings.html", {
+        "listings": listings, "source": source, "location": location, "condition": condition,
+    })
 
 
 @router.get("/opportunities", response_class=HTMLResponse)
 async def opportunities_page(request: Request):
-    ctx = get_base_context(request)
-    opportunities = ctx["data"].get("opportunities", [])
-    return templates.TemplateResponse(
-        "opportunity.html",
-        {**ctx, "opportunities": opportunities},
-    )
+    data = load_data()
+    opportunities = data.get("opportunities", [])
+    return render(request, "opportunity.html", {"opportunities": opportunities})
 
 
 @router.get("/detail/{listing_id}", response_class=HTMLResponse)
 async def detail_page(request: Request, listing_id: int):
-    ctx = get_base_context(request)
+    data = load_data()
     listing = None
-    for l in ctx["data"].get("listings", []):
+    for l in data.get("listings", []):
         if l.get("id") == listing_id:
             listing = l
             break
 
-    return templates.TemplateResponse(
-        "detail.html",
-        {**ctx, "listing": listing},
-    )
+    return render(request, "detail.html", {"listing": listing})
 
 
 @router.get("/api/data")
