@@ -124,6 +124,15 @@ def run_scrape_session():
     finally:
         conn.close()
 
+    print(f"\n--- Finalizing scrape log ---")
+    conn = get_connection()
+    finish_scrape_log(
+        conn, log_id, total_found, total_new,
+        total_price_changes, len(opportunities),
+        status="success",
+    )
+    conn.close()
+
     print(f"\n--- Exporting data ---")
     try:
         conn = get_connection()
@@ -132,14 +141,6 @@ def run_scrape_session():
         print(f"Data exported to {settings.DATA_EXPORT_PATH}")
     except Exception as e:
         print(f"Export error: {e}")
-
-    conn = get_connection()
-    finish_scrape_log(
-        conn, log_id, total_found, total_new,
-        total_price_changes, len(opportunities),
-        status="success",
-    )
-    conn.close()
 
     elapsed = (datetime.datetime.now() - start_time).total_seconds()
     print(f"\n=== Session finished in {elapsed:.0f}s ===")

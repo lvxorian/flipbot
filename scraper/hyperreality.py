@@ -1,8 +1,11 @@
 import re
+import warnings
 import requests
 from bs4 import BeautifulSoup
 
 from scraper.base import BaseScraper
+
+warnings.filterwarnings("ignore", category=requests.packages.urllib3.exceptions.InsecureRequestWarning)
 
 
 class HyperRealityScraper(BaseScraper):
@@ -18,7 +21,7 @@ class HyperRealityScraper(BaseScraper):
         results = []
 
         try:
-            resp = requests.get(url, headers=headers, timeout=60)
+            resp = requests.get(url, headers=headers, timeout=60, verify=False)
             resp.raise_for_status()
             soup = BeautifulSoup(resp.text, "lxml")
             items = soup.select(".list-offer, .offer, article, .item, .estate-card")

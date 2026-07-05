@@ -1,103 +1,94 @@
-import json
 import re
-import requests
-from typing import Optional
-
+from playwright.sync_api import Page, TimeoutError as PwTimeout
 from scraper.base import BaseScraper
-from utils.user_agents import USER_AGENTS
-
-
-LOCALITY_MAP = {
-    "cheb": {"region": "CZ041", "subregion": 3808},
-    "karlovy-vary": {"region": "CZ041", "subregion": 3940},
-    "sokolov": {"region": "CZ041", "subregion": 3939},
-    "marianske-lazne": {"region": "CZ041", "subregion": 3808},
-    "kraslice": {"region": "CZ041", "subregion": 3939},
-    "as": {"region": "CZ041", "subregion": 3808},
-    "frantiskovy-lazne": {"region": "CZ041", "subregion": 3808},
-}
+from scraper.config import settings
 
 
 class SrealityScraper(BaseScraper):
     SOURCE_NAME = "sreality"
 
     def get_search_url(self, location: str) -> str:
-        loc = LOCALITY_MAP.get(location, {"region": "CZ041"})
-        region = loc["region"]
-        params = (
-            f"category_main_cb=1&category_type_cb=1&locality_region={region}"
-            f"&per_page=60&tms=1"
-        )
-        return f"https://www.sreality.cz/api/cs/v2/estates?{params}"
+        return f"https://www.sreality.cz/hledani/prodej/byty/{location}/"
 
-    def scrape(self, location: str, headless: bool = True) -> list[dict]:
-        self.random_delay()
-        url = self.get_search_url(location)
-        headers = {"User-Agent": self.user_agent}
+    def parse_listings(self, page: Page) -> list[dict]:
         results = []
-
         try:
-            resp = requests.get(url, headers=headers, timeout=60)
-            resp.raise_for_status()
-            data = resp.json()
+            page.wait_for_selector('[id^="estate-list-item"]', timeout=20000)
+        except Exception:
+            print("[sreality] No listing items found")
+            return results
 
-            for item in data.get("_embedded", {}).get("estates", []):
-                listing = self._parse_item(item, location)
+        self.random_delay(2, 4)
+        cards = page.query_selector_all('[id^="estate-list-item"]')
+        print(f"[sreality] Found {len(cards)} cards")
+
+        for card in cards:
+            try:
+                listing = self._parse_card(card)
                 if listing:
                     results.append(listing)
-        except Exception as e:
-            print(f"[sreality] Error fetching {location}: {e}")
+            except Exception as e:
+                print(f"[sreality] Card parse error: {e}")
+                continue
 
         return results
 
-    def _parse_item(self, item: dict, location: str) -> dict | None:
-        try:
-            external_id = str(item.get("hash_id", ""))
-            if not external_id:
-                return None
+    def _safe_scrape_page(self, page: Page, location: str) -> list[dict]:
+        url = self.get_search_url(location)
+        print(f"[sreality] Fetching {url}")
+        page.goto(url, wait_until="domcontentloaded", timeout=settings.TIMEOUT_MS)
+        self._handle_consent(page)
+        self.random_delay()
+        return self.parse_listings(page)
 
-            price = item.get("price_czk")
-            if price is None:
-                price_raw = item.get("price")
-                price = self.extract_price(str(price_raw)) if price_raw else None
+    def _handle_consent(self, page: Page) -> None:
+        if "cmp.seznam" in page.url:
+            try:
+                btn = page.wait_for_selector(
+                    "[data-testid='cw-button-agree-with-ads']", timeout=10000
+                )
+                if btn:
+                    btn.click(force=True)
+                    page.wait_for_url("**sreality.cz**", timeout=15000)
+            except PwTimeout:
+                raise
+            except Exception as e:
+                print(f"[sreality] Consent error: {e}")
 
-            area = item.get("built_area") or item.get("area")
-            if area is None:
-                area = self.extract_area(str(item.get("locality", "")))
-
-            title = item.get("name", {}).get("cs-CZ", "")
-
-            sealing = item.get("sealing", {})
-            condition_text = sealing.get("text", "") if sealing else ""
-            condition = self.extract_condition(condition_text)
-
-            locality_parts = []
-            for part in ["region", "district", "municipality", "city", "street"]:
-                val = item.get("locality", {}).get(part)
-                if val:
-                    locality_parts.append(str(val))
-            full_location = ", ".join(locality_parts) if locality_parts else location
-
-            image_url = None
-            images = item.get("_links", {}).get("images", [])
-            if images:
-                image_url = f"https://www.sreality.cz{images[0].get('href', '')}" if "href" in images[0] else None
-
-            return {
-                "external_id": external_id,
-                "source": self.SOURCE_NAME,
-                "url": f"https://www.sreality.cz/detail/prodej/byt/{item.get('locality', {}).get('slug', location)}/{external_id}",
-                "title": title,
-                "location": full_location,
-                "price": price,
-                "area_m2": area,
-                "condition": condition,
-                "description": item.get("description", {}).get("cs-CZ", ""),
-                "image_url": image_url,
-            }
-        except Exception as e:
-            print(f"[sreality] Error parsing item: {e}")
+    def _parse_card(self, card) -> dict | None:
+        link = card.query_selector("a")
+        if not link:
             return None
 
-    def parse_listings(self, page) -> list[dict]:
-        pass
+        href = link.get_attribute("href") or ""
+        url = f"https://www.sreality.cz{href}" if href.startswith("/") else href
+
+        id_match = re.search(r"/(\d+)$", href)
+        if not id_match:
+            return None
+        external_id = id_match.group(1)
+
+        price_el = card.query_selector("p:has-text('Kč')")
+        price = self.extract_price(price_el.inner_text()) if price_el else None
+
+        paras = card.query_selector_all("p")
+        title = paras[0].inner_text().strip() if paras else ""
+        location = paras[1].inner_text().strip() if len(paras) >= 2 else ""
+        area = self.extract_area(title)
+        condition = self.extract_condition(title)
+
+        img_el = card.query_selector("img")
+        image_url = img_el.get_attribute("src") if img_el else None
+
+        return {
+            "external_id": external_id,
+            "source": self.SOURCE_NAME,
+            "url": url,
+            "title": title,
+            "location": location,
+            "price": price,
+            "area_m2": area,
+            "condition": condition,
+            "description": title,
+            "image_url": image_url,
+        }
