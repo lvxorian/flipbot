@@ -1,0 +1,59 @@
+name: FlipBot Scrape
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+env:
+  DB_PATH: data/flipbot.db
+  DATA_EXPORT_PATH: data/data.json
+  TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+  TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Restore DB from cache
+        uses: actions/cache@v4
+        id: db-cache
+        with:
+          path: data/
+          key: flipbot-db-${{ github.run_id }}
+          restore-keys: flipbot-db-
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          playwright install chromium
+
+      - name: Run scraper
+        run: python main.py
+
+      - name: Commit data.json
+        run: |
+          git config user.name "FlipBot"
+          git config user.email "flipbot@github.actions"
+          git add data/data.json
+          git diff --staged --quiet || (git commit -m "chore: update data.json [skip ci]" && git push)
+
+      - name: Upload DB artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: flipbot-db
+          path: data/flipbot.db
+          retention-days: 30
+          compression-level: 9

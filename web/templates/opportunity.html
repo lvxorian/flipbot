@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %}Příležitosti{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto">
+    <div class="mb-6">
+        <h2 class="text-2xl font-bold text-slate-900">Investiční příležitosti</h2>
+        <p class="text-sm text-slate-500 mt-1">Byty podhodnocené o více než 15 % oproti tržnímu mediánu</p>
+    </div>
+
+    {% if opportunities %}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {% for opp in opportunities %}
+        <a href="{{ opp.url }}" target="_blank"
+           class="group bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md hover:border-emerald-300 transition-all duration-200">
+            <div class="p-5">
+                <div class="flex items-start justify-between mb-3">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+                        {% if opp.source == 'sreality' %}bg-blue-50 text-blue-700
+                        {% elif opp.source == 'bezrealitky' %}bg-emerald-50 text-emerald-700
+                        {% elif opp.source == 'annonce' %}bg-amber-50 text-amber-700
+                        {% elif opp.source == 'bazos' %}bg-red-50 text-red-700
+                        {% else %}bg-slate-50 text-slate-700{% endif %}">
+                        {{ opp.source }}
+                    </span>
+                    <span class="text-lg font-bold text-emerald-600">−{{ opp.discount_pct|int }}%</span>
+                </div>
+
+                <h3 class="text-sm font-semibold text-slate-900 mb-1 group-hover:text-emerald-700 transition-colors">
+                    {{ opp.title[:60] }}
+                </h3>
+                <p class="text-xs text-slate-500 mb-4">{{ opp.location[:40] }}</p>
+
+                <div class="grid grid-cols-2 gap-3 mb-4">
+                    <div>
+                        <p class="text-xs text-slate-400">Cena</p>
+                        <p class="text-sm font-semibold text-slate-900">{{ "{:,.0f}".format(opp.price) }} Kč</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-400">Plocha</p>
+                        <p class="text-sm font-semibold text-slate-900">{{ opp.area_m2 }} m²</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-400">Tato cena / m²</p>
+                        <p class="text-sm font-semibold text-slate-900">{{ "{:,.0f}".format(opp.price_m2) }} Kč</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-400">Medián trhu / m²</p>
+                        <p class="text-sm font-semibold text-slate-900">{{ "{:,.0f}".format(opp.median_price_m2) }} Kč</p>
+                    </div>
+                </div>
+
+                <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                    <div class="bg-emerald-500 h-2 rounded-full transition-all duration-500" style="width: {{ opp.discount_pct }}%"></div>
+                </div>
+                <p class="text-xs text-slate-400 mt-1">Sleva oproti trhu: {{ opp.discount_pct }}%</p>
+            </div>
+
+            <div class="px-5 py-3 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+                <span class="text-xs text-slate-400">{{ opp.detected_at[:10] if opp.detected_at else '' }}</span>
+                <span class="text-xs font-medium text-slate-600 group-hover:text-emerald-600 transition-colors">
+                    Otevřít inzerát →
+                </span>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-12 text-center">
+        <div class="w-16 h-16 mx-auto mb-4 bg-slate-100 rounded-full flex items-center justify-center">
+            <svg class="w-8 h-8 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-slate-900 mb-2">Zatím žádné příležitosti</h3>
+        <p class="text-sm text-slate-500 max-w-md mx-auto">Až systém nalezne byty s cenou významně pod tržním mediánem, zobrazí se zde. Mezitím probíhá scraping realitních portálů.</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,211 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto">
+    <div class="flex items-center justify-between mb-8">
+        <div>
+            <h2 class="text-2xl font-bold text-slate-900">Dashboard</h2>
+            <p class="text-sm text-slate-500 mt-1">Přehled realitního trhu a detekované příležitosti</p>
+        </div>
+        {% if stats.last_scan %}
+        <div class="text-xs text-slate-400 bg-white px-4 py-2 rounded-lg shadow-sm border border-slate-200">
+            Poslední aktualizace: {{ stats.last_scan[:16].replace('T', ' ') }}
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-5 transition-all duration-200 hover:shadow-md hover:border-slate-300">
+            <div class="flex items-center justify-between mb-3">
+                <p class="text-sm font-medium text-slate-500">Celkem inzerátů</p>
+                <div class="w-9 h-9 bg-blue-50 rounded-lg flex items-center justify-center">
+                    <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                    </svg>
+                </div>
+            </div>
+            <p class="text-3xl font-bold text-slate-900">{{ stats.active_listings }}</p>
+            <p class="text-xs text-slate-400 mt-1">z toho {{ stats.total_listings }} aktivních</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-5 transition-all duration-200 hover:shadow-md hover:border-slate-300">
+            <div class="flex items-center justify-between mb-3">
+                <p class="text-sm font-medium text-slate-500">Prům. cena / m²</p>
+                <div class="w-9 h-9 bg-emerald-50 rounded-lg flex items-center justify-center">
+                    <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+            </div>
+            <p class="text-3xl font-bold text-slate-900">{{ "{:,.0f}".format(stats.avg_price_m2) }} <span class="text-sm font-normal text-slate-400">Kč</span></p>
+            <p class="text-xs text-slate-400 mt-1">průměrná cena za metr čtvereční</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-5 transition-all duration-200 hover:shadow-md hover:border-slate-300">
+            <div class="flex items-center justify-between mb-3">
+                <p class="text-sm font-medium text-slate-500">Prům. cena</p>
+                <div class="w-9 h-9 bg-violet-50 rounded-lg flex items-center justify-center">
+                    <svg class="w-4 h-4 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+                    </svg>
+                </div>
+            </div>
+            <p class="text-3xl font-bold text-slate-900">{{ "{:,.0f}".format(stats.avg_price) }} <span class="text-sm font-normal text-slate-400">Kč</span></p>
+            <p class="text-xs text-slate-400 mt-1">průměrná cena bytu</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-5 transition-all duration-200 hover:shadow-md hover:border-slate-300">
+            <div class="flex items-center justify-between mb-3">
+                <p class="text-sm font-medium text-slate-500">Příležitosti</p>
+                <div class="w-9 h-9 bg-amber-50 rounded-lg flex items-center justify-center">
+                    <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                    </svg>
+                </div>
+            </div>
+            <p class="text-3xl font-bold text-slate-900">{{ stats.total_opportunities }}</p>
+            <p class="text-xs text-slate-400 mt-1">potenciálních flip / investic</p>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+        <div class="lg:col-span-2 bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+            <h3 class="text-base font-semibold text-slate-900 mb-4">Rozložení inzerátů dle zdroje</h3>
+            <div class="h-64">
+                <canvas id="sourceChart"></canvas>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+            <h3 class="text-base font-semibold text-slate-900 mb-4">Nejnovější příležitosti</h3>
+            {% if opportunities %}
+            <div class="space-y-3">
+                {% for opp in opportunities[:5] %}
+                <a href="{{ opp.url }}" target="_blank"
+                   class="block p-3 rounded-lg border border-slate-100 hover:border-emerald-200 hover:bg-emerald-50/50 transition-all duration-200">
+                    <div class="flex items-start justify-between gap-2">
+                        <div class="min-w-0">
+                            <p class="text-sm font-medium text-slate-900 truncate">{{ opp.title[:50] }}</p>
+                            <p class="text-xs text-slate-500 mt-0.5">{{ opp.location[:30] }}</p>
+                        </div>
+                        <span class="text-xs font-bold text-emerald-600 whitespace-nowrap bg-emerald-50 px-2 py-0.5 rounded">
+                            -{{ opp.discount_pct|int }}%
+                        </span>
+                    </div>
+                    <div class="flex items-center gap-3 mt-2 text-xs text-slate-400">
+                        <span>{{ "{:,.0f}".format(opp.price) }} Kč</span>
+                        <span>•</span>
+                        <span>{{ opp.area_m2 }} m²</span>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="flex flex-col items-center justify-center h-48 text-slate-400">
+                <svg class="w-10 h-10 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <p class="text-sm">Zatím žádné příležitosti</p>
+                <p class="text-xs mt-1">Počkejte na první scraping</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+            <h3 class="text-base font-semibold text-slate-900 mb-4">Stav bytů</h3>
+            <div class="h-64">
+                <canvas id="conditionChart"></canvas>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+            <h3 class="text-base font-semibold text-slate-900 mb-4">Lokality</h3>
+            <div class="h-64">
+                <canvas id="locationChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+const sourceColors = {{ source_data | map(attribute='color') | list | tojson }};
+const sourceLabels = {{ source_data | map(attribute='name') | list | tojson }};
+const sourceValues = {{ source_data | map(attribute='value') | list | tojson }};
+
+new Chart(document.getElementById('sourceChart'), {
+    type: 'doughnut',
+    data: {
+        labels: sourceLabels,
+        datasets: [{
+            data: sourceValues,
+            backgroundColor: sourceColors,
+            borderWidth: 0,
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'right',
+                labels: { padding: 16, usePointStyle: true, font: { size: 12 } }
+            }
+        },
+        cutout: '65%',
+    }
+});
+
+const condLabels = {{ condition_counts.keys() | list | tojson }};
+const condValues = {{ condition_counts.values() | list | tojson }};
+const condColors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#06b6d4', '#6b7280'];
+
+new Chart(document.getElementById('conditionChart'), {
+    type: 'bar',
+    data: {
+        labels: condLabels,
+        datasets: [{
+            label: 'Počet inzerátů',
+            data: condValues,
+            backgroundColor: condColors.slice(0, condLabels.length),
+            borderRadius: 6,
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+            y: { beginAtZero: true, grid: { color: '#f1f5f9' } },
+            x: { grid: { display: false } }
+        }
+    }
+});
+
+const locLabels = {{ location_counts.keys() | list | tojson }};
+const locValues = {{ location_counts.values() | list | tojson }};
+
+new Chart(document.getElementById('locationChart'), {
+    type: 'polarArea',
+    data: {
+        labels: locLabels,
+        datasets: [{
+            data: locValues,
+            backgroundColor: ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'],
+            borderWidth: 0,
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { position: 'right', labels: { padding: 12, usePointStyle: true, font: { size: 12 } } }
+        }
+    }
+});
+</script>
+{% endblock %}
