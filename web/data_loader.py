@@ -1,14 +1,17 @@
 import json
 import os
 from pathlib import Path
-from typing import Optional
 
 
-DATA_FILE = os.getenv("DATA_EXPORT_PATH", "data/data.json")
+def get_data_path() -> Path:
+    env_path = os.getenv("DATA_EXPORT_PATH")
+    if env_path:
+        return Path(env_path)
+    return Path(__file__).parent.parent.parent / "data" / "data.json"
 
 
 def load_data() -> dict:
-    path = Path(DATA_FILE)
+    path = get_data_path()
     if not path.exists():
         return {
             "exported_at": None,
@@ -26,8 +29,6 @@ def load_data() -> dict:
 
 def get_dashboard_stats(data: dict) -> dict:
     listings = data.get("listings", [])
-    opportunities = data.get("opportunities", [])
-    stats = data.get("market_stats", [])
 
     prices = [l["price"] for l in listings if l.get("price")]
     areas = [l["area_m2"] for l in listings if l.get("area_m2")]
@@ -36,7 +37,6 @@ def get_dashboard_stats(data: dict) -> dict:
         if l.get("price") and l.get("area_m2"):
             price_per_m2_list.append(l["price"] / l["area_m2"])
 
-    total_value = sum(prices)
     active_listings = len([l for l in listings if l.get("price")])
     avg_price = round(sum(prices) / len(prices)) if prices else 0
     avg_price_m2 = round(sum(price_per_m2_list) / len(price_per_m2_list)) if price_per_m2_list else 0
@@ -48,10 +48,10 @@ def get_dashboard_stats(data: dict) -> dict:
     return {
         "total_listings": len(listings),
         "active_listings": active_listings,
-        "total_opportunities": len(opportunities),
+        "total_opportunities": len(data.get("opportunities", [])),
         "avg_price": avg_price,
         "avg_price_m2": avg_price_m2,
         "avg_area": avg_area,
-        "total_value": total_value,
+        "total_value": sum(prices),
         "last_scan": last_scan_time,
     }

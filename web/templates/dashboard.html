@@ -133,9 +133,9 @@
 
 {% block scripts %}
 <script>
-const sourceColors = {{ source_data | map(attribute='color') | list | tojson }};
-const sourceLabels = {{ source_data | map(attribute='name') | list | tojson }};
-const sourceValues = {{ source_data | map(attribute='value') | list | tojson }};
+const sourceColors = {{ source_colors | tojson }};
+const sourceLabels = {{ source_labels | tojson }};
+const sourceValues = {{ source_values | tojson }};
 
 new Chart(document.getElementById('sourceChart'), {
     type: 'doughnut',
@@ -160,8 +160,8 @@ new Chart(document.getElementById('sourceChart'), {
     }
 });
 
-const condLabels = {{ condition_counts.keys() | list | tojson }};
-const condValues = {{ condition_counts.values() | list | tojson }};
+const condLabels = {{ cond_labels | tojson }};
+const condValues = {{ cond_values | tojson }};
 const condColors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#06b6d4', '#6b7280'];
 
 new Chart(document.getElementById('conditionChart'), {
@@ -186,8 +186,8 @@ new Chart(document.getElementById('conditionChart'), {
     }
 });
 
-const locLabels = {{ location_counts.keys() | list | tojson }};
-const locValues = {{ location_counts.values() | list | tojson }};
+const locLabels = {{ loc_labels | tojson }};
+const locValues = {{ loc_values | tojson }};
 
 new Chart(document.getElementById('locationChart'), {
     type: 'polarArea',

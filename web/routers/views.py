@@ -35,56 +35,84 @@ def get_source_label(source: str) -> str:
     return labels.get(source, source)
 
 
-@router.get("/", response_class=HTMLResponse)
-async def dashboard(request: Request):
+def get_base_context(request: Request) -> dict:
     data = load_data()
     stats = get_dashboard_stats(data)
-    opportunities = data.get("opportunities", [])[:5]
+    return {"request": request, "stats": stats, "data": data}
+
+
+@router.get("/", response_class=HTMLResponse)
+async def dashboard(request: Request):
+    ctx = get_base_context(request)
+    data = ctx["data"]
     listings = data.get("listings", [])
+    opportunities = data.get("opportunities", [])[:5]
 
     source_counts = {}
     for l in listings:
         src = l.get("source", "unknown")
         source_counts[src] = source_counts.get(src, 0) + 1
 
-    source_data = [
-        {"name": get_source_label(k), "value": v, "color": get_source_color(k)}
-        for k, v in sorted(source_counts.items(), key=lambda x: -x[1])
-    ]
+    source_labels = []
+    source_values = []
+    source_colors = []
+    for k, v in sorted(source_counts.items(), key=lambda x: -x[1]):
+        source_labels.append(get_source_label(k))
+        source_values.append(v)
+        source_colors.append(get_source_color(k))
 
-    condition_counts = {}
+    cond_labels = []
+    cond_values = []
     for l in listings:
         cond = l.get("condition") or "neuvedeno"
-        condition_counts[cond] = condition_counts.get(cond, 0) + 1
+        if cond in cond_labels:
+            cond_values[cond_labels.index(cond)] += 1
+        else:
+            cond_labels.append(cond)
+            cond_values.append(1)
 
-    location_counts = {}
+    loc_labels = []
+    loc_values = []
     for l in listings:
         loc = l.get("location", "neuvedeno")
+        matched = False
         for known_loc in ["cheb", "karlovy", "sokolov", "mariánské"]:
             if known_loc in loc.lower():
-                location_counts[known_loc.title()] = location_counts.get(known_loc.title(), 0) + 1
+                label = known_loc.title()
+                if label in loc_labels:
+                    loc_values[loc_labels.index(label)] += 1
+                else:
+                    loc_labels.append(label)
+                    loc_values.append(1)
+                matched = True
                 break
-        else:
-            location_counts["Ostatní"] = location_counts.get("Ostatní", 0) + 1
+        if not matched:
+            if "Ostatní" in loc_labels:
+                loc_values[loc_labels.index("Ostatní")] += 1
+            else:
+                loc_labels.append("Ostatní")
+                loc_values.append(1)
 
     return templates.TemplateResponse(
         "dashboard.html",
         {
-            "request": request,
-            "stats": stats,
+            **ctx,
             "opportunities": opportunities,
-            "source_data": source_data,
-            "condition_counts": condition_counts,
-            "location_counts": location_counts,
-            "listings_count": len(listings),
+            "source_labels": source_labels,
+            "source_values": source_values,
+            "source_colors": source_colors,
+            "cond_labels": cond_labels,
+            "cond_values": cond_values,
+            "loc_labels": loc_labels,
+            "loc_values": loc_values,
         },
     )
 
 
 @router.get("/listings", response_class=HTMLResponse)
 async def listings_page(request: Request, source: str = "", location: str = "", condition: str = ""):
-    data = load_data()
-    listings = data.get("listings", [])
+    ctx = get_base_context(request)
+    listings = ctx["data"].get("listings", [])
 
     if source:
         listings = [l for l in listings if l.get("source") == source]
@@ -95,44 +123,32 @@ async def listings_page(request: Request, source: str = "", location: str = "", 
 
     return templates.TemplateResponse(
         "listings.html",
-        {
-            "request": request,
-            "listings": listings,
-            "source": source,
-            "location": location,
-            "condition": condition,
-        },
+        {**ctx, "listings": listings, "source": source, "location": location, "condition": condition},
     )
 
 
 @router.get("/opportunities", response_class=HTMLResponse)
 async def opportunities_page(request: Request):
-    data = load_data()
-    opportunities = data.get("opportunities", [])
+    ctx = get_base_context(request)
+    opportunities = ctx["data"].get("opportunities", [])
     return templates.TemplateResponse(
         "opportunity.html",
-        {"request": request, "opportunities": opportunities},
+        {**ctx, "opportunities": opportunities},
     )
 
 
 @router.get("/detail/{listing_id}", response_class=HTMLResponse)
 async def detail_page(request: Request, listing_id: int):
-    data = load_data()
+    ctx = get_base_context(request)
     listing = None
-    for l in data.get("listings", []):
+    for l in ctx["data"].get("listings", []):
         if l.get("id") == listing_id:
             listing = l
             break
 
-    if not listing:
-        return templates.TemplateResponse(
-            "detail.html",
-            {"request": request, "listing": None},
-        )
-
     return templates.TemplateResponse(
         "detail.html",
-        {"request": request, "listing": listing},
+        {**ctx, "listing": listing},
     )
 
 
@@ -143,5 +159,4 @@ async def api_data():
 
 @router.get("/api/stats")
 async def api_stats():
-    data = load_data()
-    return get_dashboard_stats(data)
+    return get_dashboard_stats(load_data())
