@@ -1,24 +1,10 @@
 {
-  "exported_at": "2026-10-20T21:45:25.800483",
+  "exported_at": "2026-10-21T03:32:35.606909",
   "total_listings": 40,
   "total_opportunities": 0,
   "listings": [
     {
       "id": 40,
-      "external_id": "1497088076",
-      "source": "sreality",
-      "url": "https://www.sreality.cz/detail/prodej/byt/3+1/chodov-chodov-csa/1497088076",
-      "title": "SLEVA: Prodej bytu 3+1 68 m²",
-      "location": "ČSA, Chodov",
-      "price": 1990000,
-      "area_m2": 68.0,
-      "condition": null,
-      "image_url": "//d18-a.sdn.cz/d_18/c_img_qG_C/kcKfrMAkFW9k4hyvIFzuER/544a.jpeg?fl=res,800,600,3|shr,,20|webp,60",
-      "first_seen": "2026-10-20T21:09:18.390084",
-      "last_seen": "2026-10-20T21:09:18.390084"
-    },
-    {
-      "id": 39,
       "external_id": "986058828",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/sokolov-sokolov-kosmonautu/986058828",
@@ -28,11 +14,11 @@
       "area_m2": 38.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qG_C/kcKfrMAkFnIwl8xLIGdAxE/5fb7.jpeg?fl=res,800,600,3|shr,,20|webp,60",
-      "first_seen": "2026-10-20T21:09:18.390073",
-      "last_seen": "2026-10-20T21:09:18.390073"
+      "first_seen": "2026-10-21T02:56:06.947491",
+      "last_seen": "2026-10-21T02:56:06.947491"
     },
     {
-      "id": 38,
+      "id": 39,
       "external_id": "1724125260",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/3+1/chodov-chodov-cs-odbojaru/1724125260",
@@ -42,11 +28,11 @@
       "area_m2": 76.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qG_C/kPw320bnC5DlJEDstIHzL1e/c1ae.jpeg?fl=res,800,600,3|shr,,20|webp,60",
-      "first_seen": "2026-10-20T21:09:18.390062",
-      "last_seen": "2026-10-20T21:09:18.390062"
+      "first_seen": "2026-10-21T02:56:06.947481",
+      "last_seen": "2026-10-21T02:56:06.947481"
     },
     {
-      "id": 37,
+      "id": 38,
       "external_id": "51585100",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/2+1/sokolov-sokolov-slavickova/51585100",
@@ -56,11 +42,11 @@
       "area_m2": 64.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qF_D/nOdL4BtPEyBiPBFDfbH3FON1/3b1f.jpeg?fl=res,800,600,3|shr,,20|webp,60",
-      "first_seen": "2026-10-20T21:09:18.390052",
-      "last_seen": "2026-10-20T21:09:18.390052"
+      "first_seen": "2026-10-21T02:56:06.947470",
+      "last_seen": "2026-10-21T02:56:06.947470"
     },
     {
-      "id": 36,
+      "id": 37,
       "external_id": "1824923724",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/sokolov-sokolov-/1824923724",
@@ -70,11 +56,11 @@
       "area_m2": 60.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qG_C/nPQ64TBsMvDLsWDC8aIILBzd/a0ff.jpeg?fl=res,800,600,3|shr,,20|webp,60",
-      "first_seen": "2026-10-20T21:09:18.390041",
-      "last_seen": "2026-10-20T21:09:18.390041"
+      "first_seen": "2026-10-21T02:56:06.947460",
+      "last_seen": "2026-10-21T02:56:06.947460"
     },
     {
-      "id": 35,
+      "id": 36,
       "external_id": "2331189324",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/habartov-habartov-mirova/2331189324",
@@ -84,11 +70,11 @@
       "area_m2": 61.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qF_D/nOdL4BtPEyCi6LRBrbH3HuvY/6043.jpeg?fl=res,800,600,3|shr,,20|webp,60",
-      "first_seen": "2026-10-20T21:09:18.390029",
-      "last_seen": "2026-10-20T21:09:18.390029"
+      "first_seen": "2026-10-21T02:56:06.947449",
+      "last_seen": "2026-10-21T02:56:06.947449"
     },
     {
-      "id": 34,
+      "id": 35,
       "external_id": "2613452876",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/3+kk/sokolov-sokolov-/2613452876",
@@ -98,11 +84,11 @@
       "area_m2": 64.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qG_C/nPQ64TBsMv4DeCULIILRSz/e72f.jpeg?fl=res,800,600,3|shr,,20|webp,60",
-      "first_seen": "2026-10-20T21:09:18.390019",
-      "last_seen": "2026-10-20T21:09:18.390019"
+      "first_seen": "2026-10-21T02:56:06.947439",
+      "last_seen": "2026-10-21T02:56:06.947439"
     },
     {
-      "id": 33,
+      "id": 34,
       "external_id": "1846353996",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/3+1/kraslice-kraslice-cs-armady/1846353996",
@@ -112,11 +98,11 @@
       "area_m2": 67.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qF_D/nOdL4BtPEyCly89BM1H160kI/74f9.jpeg?fl=res,800,600,3|shr,,20|webp,60",
-      "first_seen": "2026-10-20T21:09:18.390007",
-      "last_seen": "2026-10-20T21:09:18.390007"
+      "first_seen": "2026-10-21T02:56:06.947429",
+      "last_seen": "2026-10-21T02:56:06.947429"
     },
     {
-      "id": 32,
+      "id": 33,
       "external_id": "2248421452",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/2+1/brezova-brezova-odboraru/2248421452",
@@ -126,11 +112,11 @@
       "area_m2": 65.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qF_C/k0OqwCKRDgcHsWsHxzmRb/f926.png?fl=res,800,600,3|shr,,20|webp,60",
-      "first_seen": "2026-10-20T21:09:18.389996",
-      "last_seen": "2026-10-20T21:09:18.389996"
+      "first_seen": "2026-10-21T02:56:06.947418",
+      "last_seen": "2026-10-21T02:56:06.947418"
     },
     {
-      "id": 31,
+      "id": 32,
       "external_id": "2012733516",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/2+1/kynsperk-nad-ohri-kynsperk-nad-ohri-namesti-snp/2012733516",
@@ -140,11 +126,11 @@
       "area_m2": 55.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qD_D/nO2CysqjGrB9kIMBiN1HOvSaW/c37f.png?fl=res,800,600,3|shr,,20|webp,60",
-      "first_seen": "2026-10-20T21:09:18.389984",
-      "last_seen": "2026-10-20T21:09:18.389984"
+      "first_seen": "2026-10-21T02:56:06.947408",
+      "last_seen": "2026-10-21T02:56:06.947408"
     },
     {
-      "id": 30,
+      "id": 31,
       "external_id": "1741357132",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/2+1/sokolov-sokolov-manesova/1741357132",
@@ -153,12 +139,12 @@
       "price": 2680000,
       "area_m2": 63.0,
       "condition": null,
-      "image_url": "//d18-a.sdn.cz/d_18/c_img_qG_C/nPQ64TBsMvNXddDyuIIRy3z/45d4.jpeg?fl=res,100,100,1|jpg,80",
-      "first_seen": "2026-10-20T21:09:18.389973",
-      "last_seen": "2026-10-20T21:09:18.389973"
+      "image_url": "//d18-a.sdn.cz/d_18/c_img_qG_C/nPQ64TBsMvNXddDyuIIRy3z/45d4.jpeg?fl=res,800,600,3|shr,,20|webp,60",
+      "first_seen": "2026-10-21T02:56:06.947397",
+      "last_seen": "2026-10-21T02:56:06.947397"
     },
     {
-      "id": 29,
+      "id": 30,
       "external_id": "1117966412",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/1+kk/sokolov-sokolov-manesova/1117966412",
@@ -168,11 +154,11 @@
       "area_m2": 22.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qF_D/k0OqwCKRBOXzTVSH17atA/c45b.jpeg?fl=res,100,100,1|jpg,80",
-      "first_seen": "2026-10-20T21:09:18.389962",
-      "last_seen": "2026-10-20T21:09:18.389962"
+      "first_seen": "2026-10-21T02:56:06.947387",
+      "last_seen": "2026-10-21T02:56:06.947387"
     },
     {
-      "id": 28,
+      "id": 29,
       "external_id": "3556257868",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/2+1/kraslice-kraslice-pohranicni-straze/3556257868",
@@ -182,11 +168,11 @@
       "area_m2": 50.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qG_A/nCR9NVflLrfprWgWIBO7Qh/286f.jpeg?fl=res,100,100,1|jpg,80",
-      "first_seen": "2026-10-20T21:09:18.389951",
-      "last_seen": "2026-10-20T21:09:18.389951"
+      "first_seen": "2026-10-21T02:56:06.947377",
+      "last_seen": "2026-10-21T02:56:06.947377"
     },
     {
-      "id": 27,
+      "id": 28,
       "external_id": "1413292108",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/1+1/kraslice-kraslice-wolkerova/1413292108",
@@ -196,11 +182,11 @@
       "area_m2": 35.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qF_D/k0OqwCKRZSJdVhH15ZZu/08c8.jpeg?fl=res,100,100,1|jpg,80",
-      "first_seen": "2026-10-20T21:09:18.389940",
-      "last_seen": "2026-10-20T21:09:18.389940"
+      "first_seen": "2026-10-21T02:56:06.947366",
+      "last_seen": "2026-10-21T02:56:06.947366"
     },
     {
-      "id": 26,
+      "id": 27,
       "external_id": "89121612",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/3+kk/svatava-svatava-pohranicni-straze/89121612",
@@ -210,11 +196,11 @@
       "area_m2": 89.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qG_A/nCR9NVflLBaEbFQHzIA3roy/b663.jpeg?fl=res,100,100,1|jpg,80",
-      "first_seen": "2026-10-20T21:09:18.389929",
-      "last_seen": "2026-10-20T21:09:18.389929"
+      "first_seen": "2026-10-21T02:56:06.947356",
+      "last_seen": "2026-10-21T02:56:06.947356"
     },
     {
-      "id": 25,
+      "id": 26,
       "external_id": "894427980",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/4+kk/svatava-svatava-pohranicni-straze/894427980",
@@ -224,11 +210,11 @@
       "area_m2": 85.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qG_A/nCR9NVflLwO7jOE8IA3yuL/1643.jpeg?fl=res,100,100,1|jpg,80",
-      "first_seen": "2026-10-20T21:09:18.389917",
-      "last_seen": "2026-10-20T21:09:18.389917"
+      "first_seen": "2026-10-21T02:56:06.947345",
+      "last_seen": "2026-10-21T02:56:06.947345"
     },
     {
-      "id": 24,
+      "id": 25,
       "external_id": "480968780",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/2+1/loket-loket-sportovni/480968780",
@@ -238,11 +224,11 @@
       "area_m2": 59.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qG_C/nPQ64TBsMvDvPCvEb4IIT9RD/9415.jpeg?fl=res,100,100,1|jpg,80",
-      "first_seen": "2026-10-20T21:09:18.389904",
-      "last_seen": "2026-10-20T21:09:18.389904"
+      "first_seen": "2026-10-21T02:56:06.947334",
+      "last_seen": "2026-10-21T02:56:06.947334"
     },
     {
-      "id": 23,
+      "id": 24,
       "external_id": "2207973452",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/3+1/chodov-chodov-u-porcelanky/2207973452",
@@ -252,11 +238,11 @@
       "area_m2": 84.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qG_C/nPQ64TBsMvD902hEsgIIXhIO/93e9.jpeg?fl=res,100,100,1|jpg,80",
-      "first_seen": "2026-10-20T21:09:18.389886",
-      "last_seen": "2026-10-20T21:09:18.389886"
+      "first_seen": "2026-10-21T02:56:06.947321",
+      "last_seen": "2026-10-21T02:56:06.947321"
     },
     {
-      "id": 22,
+      "id": 23,
       "external_id": "1987563596",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/3+1/sokolov-sokolov-slavickova/1987563596",
@@ -266,11 +252,11 @@
       "area_m2": 60.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qG_C/nPQ64TBsMv4DeCGo1IIYEM7/d72c.png?fl=res,100,100,1|jpg,80",
-      "first_seen": "2026-10-20T21:09:18.389864",
-      "last_seen": "2026-10-20T21:09:18.389864"
+      "first_seen": "2026-10-21T02:56:06.947305",
+      "last_seen": "2026-10-21T02:56:06.947305"
     },
     {
-      "id": 21,
+      "id": 22,
       "external_id": "2759778380",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/2+1/rotava-rotava-sidliste/2759778380",
@@ -280,11 +266,39 @@
       "area_m2": 53.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qG_A/kcKfrMAkFDbqUh9MjIBM2vx/acca.jpeg?fl=res,100,100,1|jpg,80",
-      "first_seen": "2026-10-20T21:09:18.389663",
-      "last_seen": "2026-10-20T21:09:18.389663"
+      "first_seen": "2026-10-21T02:56:06.947286",
+      "last_seen": "2026-10-21T02:56:06.947286"
+    },
+    {
+      "id": 21,
+      "external_id": "2757304396",
+      "source": "sreality",
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+1/kraslice-kraslice-pohranicni-straze/2757304396",
+      "title": "Prodej bytu 2+1 51 m²",
+      "location": "Pohraniční stráže, Kraslice",
+      "price": 1650000,
+      "area_m2": 51.0,
+      "condition": null,
+      "image_url": "//d18-a.sdn.cz/d_18/c_img_qG_A/nCR9NVflLBaEbFnoH78t8M/21f6.jpeg?fl=res,100,100,1|jpg,80",
+      "first_seen": "2026-10-21T02:56:06.947074",
+      "last_seen": "2026-10-21T02:56:06.947074"
     },
     {
       "id": 20,
+      "external_id": "3977756748",
+      "source": "sreality",
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/marianske-lazne-marianske-lazne-chebska/3977756748",
+      "title": "Prodej bytu 2+kk 54 m²",
+      "location": "Chebská, Mariánské Lázně",
+      "price": 5490000,
+      "area_m2": 54.0,
+      "condition": null,
+      "image_url": "//d18-a.sdn.cz/d_18/c_img_qE_D/nPYADvcUkmDj2BMHFyHmPI25/560f.jpeg?fl=res,800,600,3|shr,,20|webp,60",
+      "first_seen": "2026-10-21T02:55:29.313777",
+      "last_seen": "2026-10-21T02:55:29.313777"
+    },
+    {
+      "id": 19,
       "external_id": "4279746636",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/1+kk/marianske-lazne-marianske-lazne-chebska/4279746636",
@@ -294,11 +308,11 @@
       "area_m2": 31.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qG_A/kcKfrMAkFCHDToOtpIALPG2/520e.jpeg?fl=res,800,600,3|shr,,20|webp,60",
-      "first_seen": "2026-10-20T21:08:43.146135",
-      "last_seen": "2026-10-20T21:08:43.146135"
+      "first_seen": "2026-10-21T02:55:29.313767",
+      "last_seen": "2026-10-21T02:55:29.313767"
     },
     {
-      "id": 19,
+      "id": 18,
       "external_id": "4167037004",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/marianske-lazne-marianske-lazne-ruska/4167037004",
@@ -308,11 +322,11 @@
       "area_m2": 110.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qG_C/nCR9NVflLChOIj55IHjfQY/e551.jpeg?fl=res,800,600,3|shr,,20|webp,60",
-      "first_seen": "2026-10-20T21:08:43.146124",
-      "last_seen": "2026-10-20T21:08:43.146124"
+      "first_seen": "2026-10-21T02:55:29.313756",
+      "last_seen": "2026-10-21T02:55:29.313756"
     },
     {
-      "id": 18,
+      "id": 17,
       "external_id": "262152268",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/frantiskovy-lazne-frantiskovy-lazne-zizkova/262152268",
@@ -322,11 +336,11 @@
       "area_m2": 35.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qF_E/nCR9NVflLBaEbFURH6v9UG/0dc6.jpeg?fl=res,800,600,3|shr,,20|webp,60",
-      "first_seen": "2026-10-20T21:08:43.146113",
-      "last_seen": "2026-10-20T21:08:43.146113"
+      "first_seen": "2026-10-21T02:55:29.313745",
+      "last_seen": "2026-10-21T02:55:29.313745"
     },
     {
-      "id": 17,
+      "id": 16,
       "external_id": "153129036",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/marianske-lazne-usovice-franze-kafky/153129036",
@@ -336,11 +350,11 @@
       "area_m2": 50.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qG_C/kcKfrMAkFB3JsTBIr9IFeuKs/0155.jpeg?fl=res,800,600,3|shr,,20|webp,60",
-      "first_seen": "2026-10-20T21:08:43.146102",
-      "last_seen": "2026-10-20T21:08:43.146102"
+      "first_seen": "2026-10-21T02:55:29.313735",
+      "last_seen": "2026-10-21T02:55:29.313735"
     },
     {
-      "id": 16,
+      "id": 15,
       "external_id": "344993868",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/5+kk/lazne-kynzvart-lazne-kynzvart-kralovske-svahy/344993868",
@@ -350,11 +364,11 @@
       "area_m2": 117.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qF_C/k0OqwCKRIhAnJ1wHxQ7By/eea7.jpeg?fl=res,800,600,3|shr,,20|webp,60",
-      "first_seen": "2026-10-20T21:08:43.146091",
-      "last_seen": "2026-10-20T21:08:43.146091"
+      "first_seen": "2026-10-21T02:55:29.313724",
+      "last_seen": "2026-10-21T02:55:29.313724"
     },
     {
-      "id": 15,
+      "id": 14,
       "external_id": "2749542476",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/3+1/cheb-cheb-valdstejnova/2749542476",
@@ -364,11 +378,11 @@
       "area_m2": 86.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qG_B/nCR9NVflLrfprYzrIBUdeT/889e.jpeg?fl=res,800,600,3|shr,,20|webp,60",
-      "first_seen": "2026-10-20T21:08:43.146075",
-      "last_seen": "2026-10-20T21:08:43.146075"
+      "first_seen": "2026-10-21T02:55:29.313714",
+      "last_seen": "2026-10-21T02:55:29.313714"
     },
     {
-      "id": 14,
+      "id": 13,
       "external_id": "164667468",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/3+kk/marianske-lazne-usovice-americka/164667468",
@@ -378,11 +392,11 @@
       "area_m2": 77.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qG_A/kcKfrMAkFMsuhXMQIBL7NR/b159.jpeg?fl=res,800,600,3|shr,,20|webp,60",
-      "first_seen": "2026-10-20T21:08:43.146064",
-      "last_seen": "2026-10-20T21:08:43.146064"
+      "first_seen": "2026-10-21T02:55:29.313703",
+      "last_seen": "2026-10-21T02:55:29.313703"
     },
     {
-      "id": 13,
+      "id": 12,
       "external_id": "368255052",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/4+1/marianske-lazne-marianske-lazne-na-tresnovce/368255052",
@@ -392,11 +406,11 @@
       "area_m2": 80.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qF_D/nOdL4BtPEyD4lWfURH3LSi7/934c.jpeg?fl=res,800,600,3|shr,,20|webp,60",
-      "first_seen": "2026-10-20T21:08:43.146053",
-      "last_seen": "2026-10-20T21:08:43.146053"
+      "first_seen": "2026-10-21T02:55:29.313688",
+      "last_seen": "2026-10-21T02:55:29.313688"
     },
     {
-      "id": 12,
+      "id": 11,
       "external_id": "2778169420",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/2+1/marianske-lazne-usovice-hroznatova/2778169420",
@@ -406,11 +420,11 @@
       "area_m2": 60.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qG_A/kcKfrMAkFCDh88C2kH9cpT1/4728.jpeg?fl=res,800,600,3|shr,,20|webp,60",
-      "first_seen": "2026-10-20T21:08:43.146038",
-      "last_seen": "2026-10-20T21:08:43.146038"
+      "first_seen": "2026-10-21T02:55:29.313678",
+      "last_seen": "2026-10-21T02:55:29.313678"
     },
     {
-      "id": 11,
+      "id": 10,
       "external_id": "1237807948",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/3+kk/marianske-lazne-marianske-lazne-krizikova/1237807948",
@@ -419,12 +433,12 @@
       "price": 6850000,
       "area_m2": 72.0,
       "condition": null,
-      "image_url": "//d18-a.sdn.cz/d_18/c_img_qG_A/nCR9NVflLwO7jMNsIAui3h/7241.jpeg?fl=res,800,600,3|shr,,20|webp,60",
-      "first_seen": "2026-10-20T21:08:43.146027",
-      "last_seen": "2026-10-20T21:08:43.146027"
+      "image_url": "//d18-a.sdn.cz/d_18/c_img_qG_A/nCR9NVflLwO7jMNsIAui3h/7241.jpeg?fl=res,100,100,1|jpg,80",
+      "first_seen": "2026-10-21T02:55:29.313667",
+      "last_seen": "2026-10-21T02:55:29.313667"
     },
     {
-      "id": 10,
+      "id": 9,
       "external_id": "2840445004",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/3+kk/marianske-lazne-marianske-lazne-anglicka/2840445004",
@@ -434,11 +448,11 @@
       "area_m2": 70.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qE_C/kPVqmweP7JCkmYdCBuHh4Xbo/1c73.jpeg?fl=res,100,100,1|jpg,80",
-      "first_seen": "2026-10-20T21:08:43.146016",
-      "last_seen": "2026-10-20T21:08:43.146016"
+      "first_seen": "2026-10-21T02:55:29.313656",
+      "last_seen": "2026-10-21T02:55:29.313656"
     },
     {
-      "id": 9,
+      "id": 8,
       "external_id": "3436507212",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/2+1/as-as-krajkarska/3436507212",
@@ -448,11 +462,11 @@
       "area_m2": 65.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qG_C/nCR9NVflLnoRV1jrIHnbi2/9618.jpeg?fl=res,100,100,1|jpg,80",
-      "first_seen": "2026-10-20T21:08:43.146005",
-      "last_seen": "2026-10-20T21:08:43.146005"
+      "first_seen": "2026-10-21T02:55:29.313644",
+      "last_seen": "2026-10-21T02:55:29.313644"
     },
     {
-      "id": 8,
+      "id": 7,
       "external_id": "884637772",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/3+1/tri-sekery-tri-sekery-/884637772",
@@ -462,11 +476,11 @@
       "area_m2": 96.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qF_D/k0OqwCKREBG8FCPyH26PbX/fc88.jpeg?fl=res,100,100,1|jpg,80",
-      "first_seen": "2026-10-20T21:08:43.145992",
-      "last_seen": "2026-10-20T21:08:43.145992"
+      "first_seen": "2026-10-21T02:55:29.313625",
+      "last_seen": "2026-10-21T02:55:29.313625"
     },
     {
-      "id": 7,
+      "id": 6,
       "external_id": "1494151244",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/4+1/marianske-lazne-usovice-hroznatova/1494151244",
@@ -476,11 +490,11 @@
       "area_m2": 81.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qE_A/nO573v8MsNLlZAQBRHbBYF5/ffa2.jpeg?fl=res,100,100,1|jpg,80",
-      "first_seen": "2026-10-20T21:08:43.145975",
-      "last_seen": "2026-10-20T21:08:43.145975"
+      "first_seen": "2026-10-21T02:55:29.313614",
+      "last_seen": "2026-10-21T02:55:29.313614"
     },
     {
-      "id": 6,
+      "id": 5,
       "external_id": "2125205580",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/3+1/marianske-lazne-marianske-lazne-anglicka/2125205580",
@@ -490,11 +504,11 @@
       "area_m2": 147.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qG_B/kcKfrMAkFCDh88eovIDgAVu/cbd6.jpeg?fl=res,100,100,1|jpg,80",
-      "first_seen": "2026-10-20T21:08:43.145963",
-      "last_seen": "2026-10-20T21:08:43.145963"
+      "first_seen": "2026-10-21T02:55:29.313602",
+      "last_seen": "2026-10-21T02:55:29.313602"
     },
     {
-      "id": 5,
+      "id": 4,
       "external_id": "768610380",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/3+1/marianske-lazne-usovice-manesova/768610380",
@@ -504,11 +518,11 @@
       "area_m2": 63.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qG_C/nCR9NVflLrfprBENHIFRhJb/5a8c.jpeg?fl=res,100,100,1|jpg,80",
-      "first_seen": "2026-10-20T21:08:43.145951",
-      "last_seen": "2026-10-20T21:08:43.145951"
+      "first_seen": "2026-10-21T02:55:29.313591",
+      "last_seen": "2026-10-21T02:55:29.313591"
     },
     {
-      "id": 4,
+      "id": 3,
       "external_id": "2378891340",
       "source": "sreality",
       "url": "https://www.sreality.cz/detail/prodej/byt/3+1/hranice-hranice-tovarni/2378891340",
@@ -518,22 +532,8 @@
       "area_m2": 61.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qG_C/nPQ64TBsMvCorp5DOLIISK0U/351c.jpeg?fl=res,100,100,1|jpg,80",
-      "first_seen": "2026-10-20T21:08:43.145940",
-      "last_seen": "2026-10-20T21:08:43.145940"
-    },
-    {
-      "id": 3,
-      "external_id": "1393451852",
-      "source": "sreality",
-      "url": "https://www.sreality.cz/detail/prodej/byt/3+kk/marianske-lazne-marianske-lazne-mladejovskeho/1393451852",
-      "title": "Prodej bytu 3+kk 66 m²",
-      "location": "Mladějovského, Mariánské Lázně",
-      "price": 5200000,
-      "area_m2": 66.0,
-      "condition": null,
-      "image_url": "//d18-a.sdn.cz/d_18/c_img_qB_B/kcHp2YdDtEBMvIBD6GGmtCgd/f510.jpeg?fl=res,100,100,1|jpg,80",
-      "first_seen": "2026-10-20T21:08:43.145926",
-      "last_seen": "2026-10-20T21:08:43.145926"
+      "first_seen": "2026-10-21T02:55:29.313576",
+      "last_seen": "2026-10-21T02:55:29.313576"
     },
     {
       "id": 2,
@@ -546,8 +546,8 @@
       "area_m2": 68.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qG_C/kPw320bnC5Bj4lmBhuIH4Tri/d9c4.jpeg?fl=res,100,100,1|jpg,80",
-      "first_seen": "2026-10-20T21:08:43.145903",
-      "last_seen": "2026-10-20T21:08:43.145903"
+      "first_seen": "2026-10-21T02:55:29.313556",
+      "last_seen": "2026-10-21T02:55:29.313556"
     },
     {
       "id": 1,
@@ -560,8 +560,8 @@
       "area_m2": 100.0,
       "condition": null,
       "image_url": "//d18-a.sdn.cz/d_18/c_img_qG_A/nCR9NVflLnoRVHE4IBSxiL/8718.jpeg?fl=res,100,100,1|jpg,80",
-      "first_seen": "2026-10-20T21:08:43.145703",
-      "last_seen": "2026-10-20T21:08:43.145703"
+      "first_seen": "2026-10-21T02:55:29.313373",
+      "last_seen": "2026-10-21T02:55:29.313373"
     }
   ],
   "opportunities": [],
